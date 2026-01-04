@@ -12,5 +12,5 @@ This is my personal Portfolio Website designed to show my technical skills and a
 - JavaScript
 ## Screenshots
 ![Dashboard](https://github.com/Bhavyasri1907/-Personal-Portfolio-Website/blob/main/DashBoard.png)
-!
+![About me](
 
