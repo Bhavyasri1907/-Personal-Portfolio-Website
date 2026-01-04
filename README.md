@@ -30,7 +30,7 @@ This is my personal Portfolio Website designed to show my technical skills and a
 
 ![contact](https://github.com/Bhavyasri1907/-Personal-Portfolio-Website/blob/main/contact.png)
 
-##🧑‍💻 How to run the Project
+## 🧑‍💻 How to run the Project
 
 1.Clone the repository
 ```bash
