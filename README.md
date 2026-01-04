@@ -37,5 +37,11 @@ This is my personal Portfolio Website designed to show my technical skills and a
     git clone https://github.com/Bhavyasri1907/-Personal-Portfolio-Website
 ```
 2.Open the Project folder
-3.
+
+3.Open Bhavya.html in your web browser
+
+## Future Enhancements
+- Add dark mode
+- Include animations
+
 
