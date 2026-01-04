@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BhavyaSri Nunna | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* ====== Reset & Base ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #d9f99d; /* light green */
+      color: #064e3b;      /* dark teal text */
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ====== Layout ====== */
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+      color: #022c22; /* very dark teal for headings */
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: #047857;
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+    }
+
+    /* ====== Navbar ====== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(190, 242, 100, 0.95); /* #bef264 */
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #a3e635;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: #064e3b;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #16a34a; /* green accent */
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      width: 22px;
+      height: 2px;
+      background: #065f46;
+    }
+
+    /* ====== Hero ====== */
+    #home {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-text {
+      flex: 1 1 280px;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-role {
+      color: #16a34a;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .hero-desc {
+      color: #047857;
+      margin-bottom: 25px;
+      max-width: 480px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #16a34a;
+      color: #f0fdf4;
+      font-weight: 600;
+    }
+
+    .btn-outline {
+      border-color: #16a34a;
+      color: #166534;
+      background: transparent;
+    }
+
+    .btn-primary:hover {
+      background: #15803d;
+    }
+
+    .btn-outline:hover {
+      background: rgba(22, 163, 74, 0.1);
+    }
+
+    .hero-photo {
+      flex: 0 0 220px;
+      max-width: 260px;
+      border-radius: 999px;
+      border: 3px solid #16a34a;
+      aspect-ratio: 1/1;
+      background: radial-gradient(circle at top, #bbf7d0 0, #d9f99d 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #064e3b;
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* ====== About ====== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      gap: 32px;
+    }
+
+    .about-text {
+      color: #047857;
+      font-size: 0.95rem;
+    }
+
+    .about-text p + p {
+      margin-top: 12px;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .about-list li {
+      margin-bottom: 6px;
+      color: #065f46;
+      font-size: 0.9rem;
+    }
+
+    .about-highlight {
+      background: #bbf7d0; /* pale green card */
+      border: 1px solid #22c55e;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      color: #14532d;
+    }
+
+    /* ====== Projects ====== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: #ecfccb; /* light yellow-green */
+      border-radius: 12px;
+      border: 1px solid #bef264;
+      padding: 16px 18px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(22, 163, 74, 0.2);
+      border-color: #4ade80;
+    }
+
+    .project-name {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: #166534;
+      margin-bottom: 10px;
+    }
+
+    .project-links {
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+    }
+
+    .project-links a {
+      color: #15803d;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.75rem;
+    }
+
+    .tag {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #d9f99d;
+      border: 1px solid #a3e635;
+      color: #166534;
+    }
+
+    /* ====== Skills ====== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-category {
+      background: #ecfccb;
+      border-radius: 12px;
+      border: 1px solid #bef264;
+      padding: 14px 16px;
+    }
+
+    .skill-category h3 {
+      font-size: 0.98rem;
+      margin-bottom: 8px;
+    }
+
+    .skill-category ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: #166534;
+    }
+
+    .skill-category li + li {
+      margin-top: 4px;
+    }
+
+    /* ====== Contact ====== */
+    .contact-wrapper {
+      max-width: 520px;
+    }
+
+    .contact-info {
+      color: #065f46;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #065f46;
+    }
+
+    .contact-row a {
+      color: #15803d;
+    }
+
+    /* ====== Footer ====== */
+    footer {
+      border-top: 1px solid #bbf7d0;
+      padding: 16px 0 28px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #166534;
+      background: #bef264;
+    }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        right: 0;
+        top: 60px;
+        flex-direction: column;
+        background: #bef264;
+        width: 100%;
+        padding: 12px 20px 16px;
+        border-bottom: 1px solid #a3e635;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #home {
+        padding-top: 70px;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <!-- ====== Navbar ====== -->
+  <header>
+    <div class="container nav">
+      <div class="nav-logo">Welcome To My Portfolio</div>
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ====== Hero ====== -->
+  <section id="home">
+    <div class="container hero">
+      <div class="hero-text">
+        <h1 class="hero-title">BhavyaSri Nunna</h1>
+        <div class="hero-role">B.Tech CSE Student</div>
+        <p class="hero-desc">
+          I am a Computer Science student who enjoys building web projects and solving coding problems.
+          I have built a portfolio website and a library management system, and I have solved 300+ problems on LeetCode while growing as a competitive programmer on CodeChef.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        Bhavya Sri<br />Nunna
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== About ====== -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p class="section-subtitle">Who I am and what I do</p>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I am BhavyaSri Nunna, a B.Tech Computer Science and Engineering student with a strong interest in web development and problem solving.
+            I like turning ideas into simple, user-friendly projects using HTML, CSS, and JavaScript.
+          </p>
+          <p>
+            Along with development, I actively practice data structures and algorithms.
+            I have solved over 300+ problems on LeetCode and I am a !-star coder on CodeChef, which helps me strengthen my logic and coding skills.
+          </p>
+
+          <ul class="about-list">
+            <li>📍 Location: Ongole</li>
+            <li>🎓 Degree: B.Tech CSE</li>
+            <li>💡 Interests: Web development, DSA, competitive programming</li>
+          </ul>
+        </div>
+
+        <div class="about-highlight">
+          <strong>Quick Highlights</strong><br />
+          • Built a personal portfolio website using HTML, CSS, and JavaScript.<br />
+          • Developed a library management system as a mini project.<br />
+          • Solved 300+ problems on LeetCode and became a 1★ coder on CodeChef.<br />
+          • Open to internships, projects, and hackathons.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Projects ====== -->
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <p class="section-subtitle">Some things I’ve built</p>
+
+      <div class="projects-grid">
+        <!-- Portfolio Website -->
+        <div class="project-card">
+          <h3 class="project-name">Personal Portfolio Website</h3>
+          <p class="project-links">
+            Live: <a href="file:///C:/Users/Bhavyasri.Nunna/OneDrive/Desktop/Bhavs.html#about" target="_blank">View site</a> •
+            Code: <a href="PASTE_PORTFOLIO_CODE_LINK" target="_blank">View code</a>
+          </p>
+          <p class="project-desc">
+            A responsive personal portfolio website built using HTML, CSS, and a bit of JavaScript.
+            It showcases my projects, skills, and coding profiles in a clean one-page layout.
+          </p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Library Management System -->
+        <div class="project-card">
+          <h3 class="project-name">Library Management System</h3>
+          <p class="project-links">
+            Live / Demo: <a href="https://github.com/Bhavyasri1907/Library-Management-System/tree/main" target="_blank">View demo</a> •
+            Code: <a href="https://github.com/Bhavyasri1907/Library-Management-System/blob/main/project/main.cpp" target="_blank">View code</a>
+          </p>
+          <p class="project-desc">
+            A library management system that helps manage books, users, and issuing/returning operations.
+            It focuses on organizing records efficiently and simplifying basic library workflows.
+          </p>
+          <div class="project-tags">
+            <span class="tag">C++, DBMS</span>
+            <span class="tag">SQL Database</span>
+          </div>
+        </div>
+
+        <!-- Competitive Programming / Problem Solving -->
+        <div class="project-card">
+          <h3 class="project-name">Problem Solving & CP</h3>
+          <p class="project-links">
+            LeetCode: <a href="https://leetcode.com/u/nunnabhavyasri/" target="_blank">View profile</a> •
+            CodeChef: <a href="https://www.codechef.com/users/bhavyasrinunna" target="_blank">View profile</a>
+          </p>
+          <p class="project-desc">
+            Solved 300+ problems on LeetCode and actively participate in CodeChef contests , where I am currently a 1★ coder in Codechef, 4★ in Problem Solving , 4★ in C++ , 4★ in C language  and Ceritified in SQL(basic) on Hackerrank,
+            . This helps me practice DSA and competitive programming regularly.
+          </p>
+          <div class="project-tags">
+            <span class="tag">LeetCode</span>
+            <span class="tag">CodeChef</span>
+            <span class="tag">DSA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Skills ====== -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <p class="section-subtitle">Technologies and tools I’m familiar with</p>
+
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Programming</h3>
+          <ul>
+            <li>C / C++</li>
+            <li>Python</li>
+            <li>DBMS</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>Web</h3>
+          <ul>
+            <li>HTML, CSS</li>
+            <li>Basic JavaScript</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>Problem Solving</h3>
+          <ul>
+            <li>Data Structures & Algorithms</li>
+            <li>LeetCode (300+ problems)</li>
+            <li>CodeChef (1★)</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>Tools & Others</h3>
+          <ul>
+            <li>Git & GitHub</li>
+            <li>VS Code</li>
+            <li>Communication & teamwork</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Contact ====== -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="section-subtitle">Feel free to reach out</p>
+
+      <div class="contact-wrapper">
+        <p class="contact-info">
+          If you’d like to collaborate, discuss opportunities, you can reach me through email or connect with me on my coding profiles.
+        </p>
+        <div class="contact-row">
+          <span>📧 Email: <a href="mailto:bhavyasrinunna19@gmail.com">bhavyasrinunna19@gmail.com</a></span>
+          <span>•</span>
+          <span>💻 LeetCode: <a href="https://leetcode.com/u/nunnabhavyasri/" target="_blank">LeetCode Profile</a></span>
+          <span>•</span>
+          <span>🏆 CodeChef: <a href="https://www.codechef.com/users/bhavyasrinunna" target="_blank">CodeChef Profile</a></span>
+          <span>•</span>
+          <span>💼 LinkedIn: <a href="https://www.linkedin.com/in/bhavyasri-nunna-b45b70337/" target="_blank">LinkedIn</a></span>
+          <span>•</span>
+          <span>🧑‍💻 GitHub: <a href="https://github.com/Bhavyasri1907" target="_blank">GitHub</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer>
+    <div class="container">
+      © <span id="year"></span> BhavyaSri Nunna. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- ====== Small JS ====== -->
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Active link highlight on click
+    const links = navLinks.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        navLinks.classList.remove('show');
+      });
+    });
+
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
