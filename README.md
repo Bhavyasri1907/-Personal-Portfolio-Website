@@ -31,7 +31,11 @@ This is my personal Portfolio Website designed to show my technical skills and a
 ![contact](https://github.com/Bhavyasri1907/-Personal-Portfolio-Website/blob/main/contact.png)
 
 ##🧑‍💻 How to run the Project
+
 1.Clone the repository
 ```bash
-    git clone 
+    git clone https://github.com/Bhavyasri1907/-Personal-Portfolio-Website
+```
+2.Open the Project folder
+3.
 
